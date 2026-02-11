@@ -11,6 +11,11 @@ const URLSchema= new mongoose.Schema(
         required: true,
     },
     visitHistory: [{timestamp: {type: Number}}],
+    //this is the table reference or the join we do to get the objectId of the user 
+    createdBy:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+    }
 },{timestamps: true}
 );
 

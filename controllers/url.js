@@ -8,8 +8,11 @@ async function handleGenerateNewShortURL(req,res){
         shortId: shortID,
         redirectURL: body.url,
         visitHistory:[],
+        //the below created by is getting its data by the middleware req.user
+        //checkforAuthentication-> jwt.verify -> req.user = decodeuser
+        createdBy: req.user._id,
     });
-    return res.json({id: shortID});
+    return res.render("url",{id: shortID});
 }
 
 async function handleGetAnalytics(req,res){
